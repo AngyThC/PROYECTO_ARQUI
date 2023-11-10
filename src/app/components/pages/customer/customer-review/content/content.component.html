@@ -1,0 +1,72 @@
+<!--CUSTOMERS-->
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/4.png"
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <label for="txtNombre" class="from-label">ID</label>
+            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="customer.ID_Customer">
+          </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Nombre</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="customer.Name_Customer">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">NIT</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="customer.Nit_Customer">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Telefono</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="customer.Phone_Customer" >
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Direccion</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="customer.Addres_Customer">
+      </div>
+      <div class="col-md-4">
+        <label for="txtId" class="from-label">Estado</label>
+        <input type="text" name="id" id="txtId" class="form-control"  [(ngModel)]="customer.Status_Customer">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddCustomer(customer)" >Agregar</button>
+        <button class="btn btn-warning m-2" type="button"(click)="UpdateCustomer(customer)">Modificar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onChangeState(customer)">Desactivar o Activar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>NIT</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
+             <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable" style="border-bottom: 1px solid #ddd;">
+              <td><input class="btn btn-success m-2" type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.ID_Customer }} </td>
+              <td> {{ item.Name_Customer }} </td>
+              <td> {{ item.Nit_Customer }} </td>
+              <td> {{ item.Phone_Customer }} </td>
+              <td> {{ item.Addres_Customer }} </td>
+              <td> {{ item.Status_Customer }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,79 @@
+<!--DISH-->
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/7.png" alt=""
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <!--div class="row text-center mt-5">
+      <div class="col">
+        <h2 style="font-size: 80px;">PLATILLOS</h2>
+      </div>
+    </div-->
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <label for="txtNombre" class="from-label">Id</label>                                 
+            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="dish.DishID">
+          </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Nombre Platillo</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="dish.DishName">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Descripcion Platillo</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="dish.DishDescription">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Precio Platillo</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="dish.DishPrice">
+      </div>
+      <!-- Código HTML corregido -->
+      <div class="col-md-4">
+        <label for="cmbTipoMenu" class="form-label">Tipo de Menú</label>
+        <select id="cmbTipoMenu" class="form-control" [(ngModel)]="dish.TypeMenuName" name="cmbTipoMenu">
+          <option *ngFor="let typeMenu of typeMenus" [value]="typeMenu">{{ typeMenu }}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Disponibilidad</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="dish.Status">
+      </div> 
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddDish(dish)">Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateDish(dish)">Modificar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onChangeState(dish)">Desactivar o Activar</button>
+        <button class="btn btn-primary m-2" type="button">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>Id</th>
+              <th>Nombre Platillo</th> 
+              <th>Descripcion Platillo</th>
+              <th>Precio Platillo</th>
+              <th>TypeMenuID</th>
+              <th>Disponibilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+      
+            <tr *ngFor="let item of datatable">
+              <td><input class="btn btn-success m-2" type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <td> {{ item.DishID }} </td>
+              <td> {{ item.DishName }} </td>
+              <td> {{ item.DishDescription }} </td> 
+              <td> {{ item.DishPrice }} </td>
+              <td> {{ item.TypeMenuName }} </td>
+              <td> {{ item.Status }} </td>
+            </tr>-
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

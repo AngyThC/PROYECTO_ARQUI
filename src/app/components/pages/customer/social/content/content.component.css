@@ -1,0 +1,25 @@
+button{
+    font-size: 24px;
+    margin-right: 10px;
+}
+tbody{
+    background-color: #F8BF95;
+}
+td{
+    padding: 12px;
+}
+th{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+label{
+    font-size: larger; font-weight: bold;
+}
+input, select{
+    border: 10px; color: black; 
+    background-color: #F8BF95; 
+    font-size: larger;
+}
+table{
+    font-size: 20px;
+}

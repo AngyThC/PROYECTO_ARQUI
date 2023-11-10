@@ -1,0 +1,26 @@
+<div class="ms-aside-overlay ms-overlay-left ms-toggler" id="overlayleft" (click)="navToggle()"></div>
+<perfect-scrollbar id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left" style="background-color: #7C9070; width9%;" >
+    <!-- Logo -->
+    <div class="logo-sn ms-d-block-lg" style="background-color: #586B58;">
+        <a class="pl-0 ml-0 text-center" routerLink="/">
+            <img src="../assets/imagenes/17.png" >
+        </a>
+    </div>
+    <!-- Navigation -->
+    <ngb-accordion [closeOthers]="true" class="accordion nav-accordion ms-main-aside fs-14" id="side-nav-accordion">
+        <!-- Dashboard -->
+        <ngb-panel id="static-{{item.id}}" *ngFor="let item of navlist">
+            <ng-template ngbPanelTitle>
+                <span><i class="{{item.iconclass}}">{{item.icon}}</i>{{item.linktext}} </span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <ul *ngIf="item.child" style="background-color: rgb(165, 182, 154)">
+                    <li *ngFor="let item of item.submenu"> 
+                        <a routerLink="{{item.link}}">{{item.linktext}}</a> 
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-panel>
+        <!-- Dashboard -->
+    </ngb-accordion>
+</perfect-scrollbar>

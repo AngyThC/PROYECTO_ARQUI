@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/14.jpg" alt=""
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>RECIBO</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="from-label">ID</label> 
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="bill.BillID">
+      </div>
+      <div class="col-md-4">
+        <label for="cmbTipoPago" class="form-label">Tipo de Pago</label>
+        <select id="cmbTipoPago" class="form-control" [(ngModel)]="bill.TypePay" name="cmbTipoPago">
+          <option *ngFor="let TypePay of typePays" [value]="TypePay">{{ TypePay }}</option>
+        </select>
+      </div>    
+      <div class="col-md-4">
+        <label for="cmbOrden" class="form-label">Descripcion Orden</label>
+        <select id="cmbOrden" class="form-control" [(ngModel)]="bill.DescriptionOrder" name="cmbOrden">
+          <option *ngFor="let Order of descriptionOrders" [value]="Order">{{ Order }}</option>
+        </select>
+      </div> 
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Fecha</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.bill.BillDate">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Total</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.bill.Total">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddBill(bill)">Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateBill(bill)">Modificar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Tipo Pago</th>
+              <th>Descripcion Orden</th>
+              <th>Fecha</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.BillID }} </td>
+              <td> {{ item.TypePay }} </td>
+              <td> {{ item.DescriptionOrder }} </td>
+              <td> {{ item.BillDate}} </td>
+              <td> {{ item.Total}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

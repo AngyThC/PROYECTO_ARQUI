@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="https://cdn-icons-png.flaticon.com/512/3184/3184440.png" alt=""
+          class="img-fluid" width="200px">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>ORDENES</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="from-label">ID</label> 
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="order.OrderID">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Tipo Orden</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.TypeOrder">
+      </div>    
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Nombre Cliente</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.Name_Customer  ">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Descripcion</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.DescriptionOrder">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddOrder(order)">Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateOrder(order)">Modificar</button>
+        <button class="btn btn-danger m-2" type="button">Eliminar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Tipo Orden</th>
+              <th>Nombre cliente</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.OrderID }} </td>
+              <td> {{ item.TypeOrder }} </td>
+              <td> {{ item.Name_Customer }} </td>
+              <td> {{ item.DescriptionOrder}} </td>
+              <td> {{ item.Status}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,156 @@
+  <div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/10.png" class="img-fluid" width="500px">
+      </div>
+    </div>
+    <!--<div class="row text-center mt-5">
+      <div class="col">
+        <h2>ORDEN</h2>
+      </div>
+    </div>-->
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="form-label" style="font-size: larger; font-weight: bold;">ID</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="order.OrderID">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="form-label" style="font-size: larger; font-weight: bold;">Tipo Orden</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.TypeOrder">
+      </div>
+      <div class="col-md-4">
+        <label for="cmbCliente" class="form-label" style="font-size: larger; font-weight: bold;">Nombre Cliente</label>
+        <select id="cmbCliente" class="form-control" [(ngModel)]="order.Name_Customer" name="cmbCliente">
+          <option *ngFor="let Customer of Customers" [value]="Customer">{{ Customer }}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="form-label" style="font-size: larger; font-weight: bold;">Descripcion</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.DescriptionOrder">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="form-label" style="font-size: larger; font-weight: bold;">Estado</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.order.Status">
+      </div>
+    </div>
+    <button class="btn btn-success" type="button" (click)="addOrder(order)">Agregar Orden</button>
+    <button class="btn btn-success" type="button" (click)="onChangeState(order)">Activar o Desactivar</button>
+    <button class="btn btn-warning" type="button" (click)="updateOrder(order)">Modificar Orden</button>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Tipo Orden</th>
+              <th>Nombre cliente</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of orderDatatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetOrderData(item)"></td>
+              <!-- variables de la API -->
+              <td>{{ item.OrderID }}</td>
+              <td>{{ item.TypeOrder }}</td>
+              <td>{{ item.Name_Customer }}</td>
+              <td>{{ item.DescriptionOrder }}</td>
+              <td>{{ item.Status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row text-center mt-4">
+    </div>
+    <div class="col">
+      <img src="../assets/imagenes/9.png" class="img-fluid" width="500px">
+    </div>
+    <!--
+      <div class="row text-center mt-5">
+      <div class="col">
+        <h2>DETALLE DE ORDENES</h2>
+      </div>
+    </div>
+    -->
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="form-label">ID</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="orderdetail.OrderDetailsID">
+      </div>
+      <div class="col-md-4">
+        <label for="cmbPlatillo" class="form-label">Nombre Platillo</label>
+        <select id="cmbPlatillo" class="form-control" [(ngModel)]="this.orderdetail.DishID" name="cmbPlatillo">
+          <option *ngFor="let Dish of Dishes" [value]="Dish">{{ Dish }}</option>
+        </select>
+      </div>
+     <!-- <div class="col-md-4">
+        <label for="txtNombre" class="form-label">Precio Platillo</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.orderdetail.QuantityDish">
+      </div>-->
+      <div class="col-md-4">
+        <label for="cmbBebida" class="form-label">Nombre Bebida</label>
+        <select id="cmbBebida" class="form-control" [(ngModel)]="this.orderdetail.DrinkID" name="cmbBebida">
+          <option *ngFor="let Drink of Drinks" [value]="Drink">{{ Drink }}</option>
+        </select>
+      </div>
+     <!-- <div class="col-md-4">
+        <label for="txtNombre" class="form-label">Precio Bebida</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.orderdetail.QuantityDrink">
+      </div>-->
+     <!-- <div class="col-md-4">
+        <label for="txtNombre" class="form-label">Total Orden</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.orderdetail.TotalAmount">
+      </div>-->
+      <div class="col-md-4">
+        <label for="txtNombre" class="form-label">ID Order</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="orderdetail.OrderID">
+      </div>       
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Platillo</th>
+              <th>Precio Platillo</th>
+              <th>Bebida</th>
+              <th>Precio Bebida</th>
+              <th>Total</th>
+              <th>Orden</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of orderDetailDatatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetOrderDetailData(item)"></td>
+              <!-- variables de la API -->
+              <td>{{ item.OrderDetailsID }}</td>
+              <td>{{ item.DishID }}</td>
+              <td>{{ item.QuantityDish }}</td>
+              <td>{{ item.DrinkID }}</td>
+              <td>{{ item.QuantityDrink }}</td>
+              <td>{{ item.TotalAmount }}</td>
+              <td>{{ item.OrderID }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <!-- Botones para agregar o modificar órdenes y detalles de órdenes -->
+        <button class="btn btn-success m-2" type="button" (click)="addOrderDetail(orderdetail)">Agregar Detalles</button>
+        <button class="btn btn-warning m-2" type="button" (click)="updateOrderDetail(orderdetail)">Modificar Detalle</button>
+        <!-- Botón para generar PDF -->
+        <button class="btn btn-primary m-2" type="button" (click)="generatePDF()" [disabled]="!order || !orderdetail" title="Completa los campos de orden y detalles para generar una factura">Generar FACTURA</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clearOrderAndDetail()">Limpiar</button>
+      </div>
+    </div>
+  </div>

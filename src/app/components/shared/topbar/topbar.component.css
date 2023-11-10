@@ -1,0 +1,16 @@
+i.flaticon-mail {
+    color: white;
+}
+
+i.flaticon-bell {
+    color: white;
+}
+
+.ms-form-group input.ms-form-input {
+    padding: 11px 14px;
+    border-radius: 25px;
+    border: 0;
+    background: #f0f0f7;
+    transition: 0.3s;
+    background-color: #FAF7CE;
+}

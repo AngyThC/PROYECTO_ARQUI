@@ -1,0 +1,171 @@
+[
+    {
+        "id": 1,
+        "linktext": "Inicio",
+        "iconclass": "material-icons fs-16",
+        "icon": "house",
+        "child": true,
+        "submenu": [
+            {
+                "id": 1.1,
+                "linktext": "SABOR DE LA INDIA",
+                "link": "/"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "linktext": "Datos de Menu",
+        "iconclass": "fa fa-book fs-16",
+        "icon": "",
+        "child": true,
+        "submenu": [
+            {
+                "id": 2.2,
+                "linktext": "Platillos",
+                "link": "/product/product-list"
+            },
+            {
+                "id": 2.4,
+                "linktext": "Tipo Menu",
+                "link": "/product/add-product"
+            },
+            {
+                "id": 2.5,
+                "linktext": "Roles",
+                "link": "/product/product-detail/1"
+            },
+            {
+                "id": 5.1,
+                "linktext": "Bebidas",
+                "link": "/ui-basic/accordions"
+            }
+        ]
+    }, 
+    {
+        "id": 3,
+        "linktext": "Datos de Ordenes",
+        "iconclass": "fas fa-file-invoice fs-16",
+        "icon": "",
+        "child": true,
+        "submenu": [
+            {
+                "id": 2.1,
+                "linktext": "Tipos de pago",
+                "link": "/product/product-catalogue"
+            },
+            {
+                "id": 3.1,
+                "linktext": "Orden",
+                "link": "/invoice/invoice-detail"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "linktext": "Clientes",
+        "iconclass": "fas fa-user-friends fs-16",
+        "icon": "",
+        "child": true,
+        "submenu": [
+            {
+                "id": 4.1,
+                "linktext": "Clientes",
+                "link": "/customer/customer-review"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "linktext": "Control de Usuarios",
+        "iconclass":"fa fa-user-circle fs-16    ",
+        "icon":"",
+        "child": true,
+        "submenu": [
+            {
+                "id": 4.2,
+                "linktext": "Usuarios",
+                "link": "/customer/customer-list"
+            }
+        ]
+    },
+    
+    {
+        "id": 9,
+        "linktext": "Reservaciones",
+        "iconclass":"material-icons fs-16",
+        "icon":"tune",
+        "child": true,
+        "submenu": [
+            {
+                "id": 9.1,
+                "linktext": "Disponibilidad",
+                "link": "/tables/basic-tables"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "linktext": "...",
+        "iconclass":"material-icons fs-16",
+        "icon":"insert_drive_file",
+        "child": true,
+        "submenu": [
+            {
+                "id": 14.1,
+                "linktext": "Default Login",
+                "link": "/prebuilt-pages/default-login"
+            },
+            {
+                "id": 14.2,
+                "linktext": "Modal Login",
+                "link": "/prebuilt-pages/modal-login"
+            },
+            {
+                "id": 14.3,
+                "linktext": "Default Register",
+                "link": "/prebuilt-pages/default-register"
+            },
+            {
+                "id": 14.4,
+                "linktext": "Modal Register",
+                "link": "/prebuilt-pages/modal-register"
+            },
+            {
+                "id": 14.5,
+                "linktext": "Lockscreen",
+                "link": "/prebuilt-pages/lock-screen"
+            },
+            {
+                "id": 14.6,
+                "linktext": "Coming Soon",
+                "link": "/prebuilt-pages/coming-soon"
+            },
+            {
+                "id": 14.7,
+                "linktext": "Error 404",
+                "link": "/prebuilt-pages/error"
+            },
+            {
+                "id": 14.8,
+                "linktext": "FAQ's",
+                "link": "/prebuilt-pages/faqs"
+            },
+            {
+                "id": 14.9,
+                "linktext": "Portfolio",
+                "link": "/prebuilt-pages/portfolio"
+            },
+            {
+                "id": 14.10,
+                "linktext": "User Profile",
+                "link": "/prebuilt-pages/user-profile"
+            },
+            {
+                "id": 14.11,
+                "linktext": "Invoice",
+                "link": "/prebuilt-pages/invoice"
+            }
+        ]
+    }
+]

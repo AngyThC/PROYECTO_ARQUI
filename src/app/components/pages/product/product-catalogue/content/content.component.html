@@ -1,0 +1,61 @@
+<!--TIPO PAGO-->
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/2.png"
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <!--div class="row text-center mt-5">
+      <div class="col">
+        <h2 style="font-size: 80px; color: #F97B22; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">TIPOS DE PAGO</h2>
+      </div>
+    </div-->
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="from-label" style="font-size: larger; font-weight: bold;">ID</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="typepay.ID_typepay" style="border: 10px; color: black; background-color: #F8BF95; font-size: larger;">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label" style="font-size: larger; font-weight: bold;">TIPOS</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.typepay.Name_typepay" style="border: 10px; color: black; background-color: #F8BF95; font-size: larger;"
+        >
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label" style="font-size: larger; font-weight: bold;">Disponibilidad</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.typepay.Status" style="border: 10px; color: black; background-color: #F8BF95; font-size: larger;"
+        >
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success" type="button" (click)="AddTypePay(typepay)" style="font-size: 24px; margin-right: 10px;">Agregar</button>
+        <button class="btn btn-warning" type="button" (click)="UpdateTypePay(typepay)" style="font-size: 24px; margin-right: 10px;">Modificar</button>
+        <button class="btn btn-warning" type="button" (click)="onChangeState(typepay)" style="font-size: 24px; margin-right: 10px;">Desactivar o Activar</button>
+        <button class="btn btn-secondary" type="button" (click)="clear()" style="font-size: 24px;">Limpiar</button>
+    </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped-columns" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 16px;">
+          <thead> 
+            <tr style="background-color: #ff9c56 ;">
+              <th style="padding: 12px; border-bottom: 1px solid #ddd;">Seleccionar</th>
+              <th style="padding: 12px; border-bottom: 1px solid #ddd;">ID</th>
+              <th style="padding: 12px; border-bottom: 1px solid #ddd;">Tipos</th>
+              <th style="padding: 12px; border-bottom: 1px solid #ddd;">Estado</th>
+            </tr>
+          </thead>
+          <tbody style="background-color: #F8BF95">
+            <tr *ngFor="let item of datatable" style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;"><input type="button" value="Seleccionar" (click)="onSetData(item)" class="btn btn-success m-2"></td>
+                <!-- varibales de api -->
+                <td style="padding: 12px;"> {{ item.ID_typepay }} </td>
+                <td style="padding: 12px;"> {{ item.Name_typepay }} </td>
+                <td style="padding: 12px;"> {{ item.Status }} </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

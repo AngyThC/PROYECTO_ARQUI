@@ -1,0 +1,33 @@
+.ms-quick-bar {
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 0;
+    width: 60px;
+    max-width: 60px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    background-color: #fff;
+    transform: translateX(0);
+    transition: 0.3s;
+    z-index: 12;
+    background-color: #586B58;
+}
+
+.ms-quick-bar-list {
+    height: 100%;
+    flex-direction: column;
+    background-color: #fff;
+    transition: 0.3s;
+    background-color: #586B58;
+}
+
+.ms-quick-bar:not(.ms-quick-bar-open) .nav-tabs.ms-quick-bar-list .nav-item .nav-link, .ms-quick-bar:not(.ms-quick-bar-open) .nav-tabs.ms-quick-bar-list .nav-item .nav-link i, .ms-quick-bar:not(.ms-quick-bar-open) .nav-tabs.ms-quick-bar-list .nav-item .nav-link span {
+    background-color: #7C9070;
+    color: #ffff;
+}
+
+.ms-configure-qa a {
+    display: block;
+    text-align: center;
+    color: #ffff;
+}

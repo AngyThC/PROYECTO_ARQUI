@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/1.png"
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <!--div class="row text-center mt-5">
+      <div class="col">
+        <h2>CRUD - TIPO MENU</h2>
+      </div>
+    </div-->
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <label for="txtId" class="from-label">ID</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="typemenu.Id">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Nombre</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.typemenu.Type_Menus">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Disponibilidad</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="this.typemenu.Status">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="onAddMenu(typemenu)">Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onUpdateMenu(typemenu)">Modificar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onChangeState(typemenu)">Desactivar o Activar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>ID</th>
+              <th>Nombre Menu</th>
+              <th>Disponibilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable">
+              <td><input class="btn btn-success m-2" type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.Id_TypeMenu }} </td>
+              <td> {{ item.Type_Menus }} </td>
+              <td> {{ item.Status }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

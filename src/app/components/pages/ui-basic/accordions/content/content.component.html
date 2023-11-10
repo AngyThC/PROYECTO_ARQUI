@@ -1,0 +1,80 @@
+<!--DRINK-->
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/6.png"
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2 style="font-size: 80px;">BEBIDAS</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <label for="txtNombre" class="from-label">Id</label>
+            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="drink.DrinkID">
+          </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Nombre Bebida</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="drink.DrinkName">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Descripcion Bebida</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="drink.DrinkDescription">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Precio Bebida</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="drink.DrinkPrice">
+      </div>
+      <!-- Código HTML corregido -->
+      <div class="col-md-4">
+        <label for="cmbTipoMenu" class="form-label">Tipo de Menú</label>
+        <select id="cmbTipoMenu" class="form-control" [(ngModel)]="drink.TypeMenuName" name="cmbTipoMenu">
+          <option *ngFor="let typeMenu of typeMenus" [value]="typeMenu">{{ typeMenu }}</option>
+        </select>
+      </div>  
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Disponibilidad</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="drink.Status">
+      </div>    
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddDrink(drink)" >Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateDrink(drink)">Modificar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onChangeState(drink)">Desactivar o Activar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>Id</th>
+              <th>Nombre Bebida</th>
+              <th>Descripcion Bebida</th>
+              <th>Precio Bebida</th>
+              <th>TypeMenuID</th>
+              <th>Disponibilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.DrinkID }} </td>
+              <td> {{ item.DrinkName }} </td>
+              <td> {{ item.DrinkDescription }} </td>
+              <td> {{ item.DrinkPrice }} </td>
+              <td> {{ item.TypeMenuName }} </td>
+              <td> {{ item.Status }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

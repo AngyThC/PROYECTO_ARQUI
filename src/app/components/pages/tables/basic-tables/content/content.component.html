@@ -1,0 +1,77 @@
+<!--CUSTOMERS-->
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+        <img src="../assets/imagenes/5.png" alt=""
+          class="img-fluid" width="500px">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2 style="font-size: 80px;">DISPONIBILIDAD</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <label for="txtNombre" class="from-label">Id</label>
+            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityID">
+          </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Maximo de Personas</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityPersonsMAX">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Minimo de Personas</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityPersonsMIN">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Maximo al Dia</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityReservationDailyMAX">
+      </div>
+      <div class="col-md-4">
+        <label for="txtNombre" class="from-label">Maximo a la Semanales</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityReservationWeeklyMAX">
+      </div>
+      <div class="col-md-4">
+        <label for="txtId" class="from-label">Maximo al Mes</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="availability.AvailibityReservationMonthlyMAX">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success m-2" type="button" (click)="AddAvailability(availability)">Agregar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateAvailability(availability)">Modificar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtMascota" class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Seleccionar</th>
+              <th>Id</th>
+              <th>Maximo de Personas</th>
+              <th>Minimo de Personas</th>
+              <th>Maximo al Dia</th>
+              <th>Maximo a la Semanales</th>
+              <th>Maximo al Mes</th>
+              <th>Maximo al Mes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datatable">
+              <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+              <!-- varibales de api -->
+              <td> {{ item.AvailibityID }} </td>
+              <td> {{ item.AvailibityPersonsMAX }} </td>
+              <td> {{ item.AvailibityPersonsMIN }} </td>
+              <td> {{ item.AvailibityReservationDailyMAX }} </td>
+              <td> {{ item.AvailibityReservationWeeklyMAX }} </td>
+              <td> {{ item.AvailibityReservationMonthlyMAX }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

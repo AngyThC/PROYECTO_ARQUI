@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row text-center mt-4">
+    <div class="col">
+      <img src="../assets/imagenes/8.png" alt="" class="img-fluid"
+        width="500px">
+    </div>
+  </div>
+  <!--div class="row text-center mt-5">
+    <div class="col">
+      <h2 style="font-size: 80px;">USUARIOS</h2>
+    </div>
+  </div-->
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <label for="txtNombre" class="form-label">ID</label>
+      <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="users.UserID">
+    </div>
+    <div class="col-md-4">
+      <label for="txtNombre" class="form-label">Usuario</label>
+      <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="users.UserName">
+    </div>
+    <div class="col-md-4">
+      <label for="cmbRol" class="form-label">Rol</label>
+      <select id="cmbRol" class="form-control" [(ngModel)]="users.RoleName" name="cmbRol">
+        <option *ngFor="let role of rols" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mt-5 text-center">
+    <div class="col">
+      <button class="btn btn-warning m-2" type="button" (click)="UpdateUsers(users)">Modificar</button>
+      <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <table id="dtMascota" class="table table-striped" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Seleccionar</th>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatable">
+            <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
+            <td>{{ item.UserID }}</td>
+            <td>{{ item.UserName }}</td>
+            <td>{{ item.RoleName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
