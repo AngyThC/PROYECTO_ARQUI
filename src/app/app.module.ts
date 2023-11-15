@@ -12,6 +12,7 @@ import { PreloaderComponent } from './preloader/preloader.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultLoginComponent } from './components/pages/prebuilt-pages/default-login/default-login.component';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DefaultLoginComponent } from './components/pages/prebuilt-pages/default
     PreloaderComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -28,8 +30,7 @@ import { DefaultLoginComponent } from './components/pages/prebuilt-pages/default
     HttpClientModule,
     SortablejsModule.forRoot({ animation: 150 }),
     FormsModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,    
   ],
   providers: [],
   bootstrap: [AppComponent],

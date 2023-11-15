@@ -3,21 +3,22 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { SidenavMeseroComponent } from '../../shared/sidenav-mesero/sidenav-mesero.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { HomeMeseroRoutingModule } from './home-routing.module';
+import { HomeMeseroComponent } from './homeM.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ContentComponent } from './content/content.component';
 
 @NgModule({
-  declarations: [HomeComponent, ContentComponent],
+  declarations: [HomeMeseroComponent, ContentComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    HomeMeseroRoutingModule,
     SharedModule,
     NgbModule,
     ChartsModule,
@@ -30,4 +31,4 @@ import { ContentComponent } from './content/content.component';
     }
   ]
 })
-export class HomeModule { }
+export class HomeMeseroModule { }

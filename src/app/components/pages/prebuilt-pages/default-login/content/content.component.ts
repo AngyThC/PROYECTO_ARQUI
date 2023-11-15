@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/auth.service';  // Importa el servicio de autenticación
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-content',
@@ -10,36 +10,28 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+  currentUser: any;
   loginError: string = '';
   loginForm: FormGroup;
-  username: string;
-  password: string;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private loginservice: LoginService) { }
+
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+      console.log(user);
+    });
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    this.onDataTable();
-  }
-
-  onDataTable() {
-    // Lógica para obtener datos
   }
 
   login() {
-          //Validacion para los usuarios de la base de datos
-          this.loginservice.ValidateUser(this.username,this.password).subscribe((data) => {
-            if (data) {
-              // Si los datos del usuario existen, realizar alguna acción, por ejemplo, navegar a la página de inicio.
-              this.router.navigate(['/home']);
-            } else {
-              // Si no existen datos del usuario, mostrar un mensaje de error.
-              console.log('Error: Usuario no encontrado');
-            }
-          });
+    // Llama al servicio de autenticación con los datos del formulario
+    this.authService.login(this.loginForm.value);
   }
+  
+  // Otros métodos y lógica según sea necesario
 }

@@ -5,7 +5,7 @@
   },
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {
+  "projects": { 
     "Costic": {
       "projectType": "application",
       "schematics": {},
@@ -25,7 +25,7 @@
               "ng2-ion-range-slider/lib/ion-range-slider.module",
               "ng2-ion-range-slider/lib/ion-range-slider.component",
               "withinviewport"
-          ],         
+            ],        
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

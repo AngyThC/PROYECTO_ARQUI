@@ -48,8 +48,6 @@ export class ContentComponent implements OnInit {
   generateInvoicePDF(order: Order, orderDetails: OrderDetails[]): void {
     const pdf = new jsPDF();
     
-
-  
     // Contenido de la factura para la orden
     const orderContent = `
       ID ORDEN: ${order.OrderID}

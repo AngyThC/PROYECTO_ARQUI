@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentComponent } from './components/pages/prebuilt-pages/default-login/content/content.component';
+import { SidenavMeseroComponent } from './components/shared/sidenav-mesero/sidenav-mesero.component';
+
 
 const routes: Routes = [
  
   // Home
   { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: "Homepage" } },
+  { path: 'homeM', loadChildren: () => import('./components/pages/home copy/homeM.module').then(m => m.HomeMeseroModule), data: { breadcrumb: "Homepage" } },
   // Product
   { path: 'product/product-catalogue', loadChildren: () => import('./components/pages/product/product-catalogue/product-catalogue.module').then(m => m.ProductCatalogueModule), data: { breadcrumb: "Product Catalogue" } },
   { path: 'product/product-list', loadChildren: () => import('./components/pages/product/product-list/product-list.module').then(m => m.ProductListModule), data: { breadcrumb: "Product List" } },
@@ -86,8 +89,40 @@ const routes: Routes = [
   { path: 'restaurants', loadChildren: () => import('./components/pages/restaurants/restaurants.module').then(m => m.RestaurantsModule), data: { breadcrumb: "Restaurants" } },
   { path: 'sales', loadChildren: () => import('./components/pages/sales/sales.module').then(m => m.SalesModule), data: { breadcrumb: "Sales" } },
   { path: 'widgets', loadChildren: () => import('./components/pages/widgets/widgets.module').then(m => m.WidgetsModule), data: { breadcrumb: "Widgets" } },
-  { path: 'animation', loadChildren: () => import('./components/pages/animation/animation.module').then(m => m.AnimationModule), data: { breadcrumb: "Animations" } }
+  { path: 'animation', loadChildren: () => import('./components/pages/animation/animation.module').then(m => m.AnimationModule), data: { breadcrumb: "Animations" } },
 
+  {
+    path: 'homeM',
+    component: SidenavMeseroComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./components/pages/dashboard/web-analytics/web-analytics.module').then(m => m.WebAnalyticsModule),
+        data: { breadcrumb: "Web Analytics" }
+      },
+      {
+        path: 'invoice/invoice-detail',
+        loadChildren: () => import('./components/pages/invoice/invoice-detail/invoice-detail.module').then(m => m.InvoiceDetailModule),
+        data: { breadcrumb: "Invoice Detail" }
+      },
+      {
+        path: 'customer/customer-review',
+        loadChildren: () => import('./components/pages/customer/customer-review/customer-review.module').then(m => m.CustomerReviewModule),
+        data: { breadcrumb: "Customer Review" }
+      },
+      {
+        path: 'tables/basic-tables',
+        loadChildren: () => import('./components/pages/tables/basic-tables/basic-tables.module').then(m => m.BasicTablesModule),
+        data: { breadcrumb: "Basic Tables" }
+      },
+      // Agrega otras rutas específicas para meseros aquí...
+    ]
+  },
 ];
 
 @NgModule({

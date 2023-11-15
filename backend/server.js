@@ -3,7 +3,7 @@ const sql = require('mssql');
 
 const app = express();
 const port = 1433;
-
+app.use(cors());
 // Configura la conexión a SQL Server
 const config = {
   user: 'sa',

@@ -14,46 +14,12 @@
         ]
     },
     {
-        "id": 2,
-        "linktext": "Datos de Menu",
-        "iconclass": "fa fa-book fs-16",
-        "icon": "",
-        "child": true,
-        "submenu": [
-            {
-                "id": 2.2,
-                "linktext": "Platillos",
-                "link": "/product/product-list"
-            },
-            {
-                "id": 2.4,
-                "linktext": "Tipo Menu",
-                "link": "/product/add-product"
-            },
-            {
-                "id": 2.5,
-                "linktext": "Roles",
-                "link": "/product/product-detail/1"
-            },
-            {
-                "id": 5.1,
-                "linktext": "Bebidas",
-                "link": "/ui-basic/accordions"
-            }
-        ]
-    }, 
-    {
         "id": 3,
         "linktext": "Datos de Ordenes",
         "iconclass": "fas fa-file-invoice fs-16",
         "icon": "",
         "child": true,
         "submenu": [
-            {
-                "id": 2.1,
-                "linktext": "Tipos de pago",
-                "link": "/product/product-catalogue"
-            },
             {
                 "id": 3.1,
                 "linktext": "Orden",
@@ -86,20 +52,6 @@
                 "id": 9.1,
                 "linktext": "Reservación",
                 "link": "/tables/basic-tables"
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "linktext": "Control de Usuarios",
-        "iconclass":"fa fa-user-circle fs-16    ",
-        "icon":"",
-        "child": true,
-        "submenu": [
-            {
-                "id": 4.2,
-                "linktext": "Usuarios",
-                "link": "/customer/customer-list"
             }
         ]
     },

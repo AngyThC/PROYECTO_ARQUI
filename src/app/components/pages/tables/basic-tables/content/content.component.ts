@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Availability } from 'src/app/models/availability';
-import { AvailabilityService } from 'src/app/services/availability.service';
+import { Reservation } from 'src/app/models/reservation';
+import { ReservationService } from 'src/app/services/reservation.service';
+import { Customer } from 'src/app/models/customer';
 
 @Component({
   selector: 'app-content',
@@ -8,42 +10,50 @@ import { AvailabilityService } from 'src/app/services/availability.service';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent  {
-
-  availability:Availability = new Availability();
+  customer: Customer = new Customer();
+  Customers: string[] = [];
+  reservation:Reservation = new Reservation();
   datatable:any = [];
 
-  constructor(private availabilityservice:AvailabilityService) { }
+  constructor(private reservationservice:ReservationService) { }
 
   ngOnInit(): void {
     this.onDataTable();
+    this.loadClientes();
   }
 
   
   onDataTable(){
-    this.availabilityservice.GetAvailability().subscribe((res:any)=>{
+    this.reservationservice.GetReservation().subscribe((res:any)=>{
        this.datatable = res;
     });
   }
 
-  //AddAvailability
-  AddAvailability(availability:Availability):void{
-    console.log(availability)
-    this.availabilityservice.AddAvailability(availability).subscribe(res=> {
-      if(res){
-        alert(`El registro ${availability.AvailibityID} se ha registrado correctamente`);
-        this.clear();
-        this.onDataTable();
-      }else{
-        alert('Error de registro')
+  //AddReservation
+  AddReservation(reservation: Reservation): void {
+    // Verificar fechas duplicadas antes de agregar
+    this.reservationservice.checkDuplicateDates(reservation.ReservationDate, this.datatable).subscribe(isDuplicate => {
+      if (isDuplicate) {
+        alert('No se puede hacer la reservación. Hay más de tres fechas iguales.');
+      } else {
+        this.reservationservice.AddReservation(reservation).subscribe(res => {
+          if (res) {
+            alert(`El registro ${reservation.Description} se ha registrado correctamente`);
+            this.clear();
+            this.onDataTable();
+          } else {
+            alert('Error de registro');
+          }
+        });
       }
     });
   }
 
-  //updateAvailability
-  UpdateAvailability(availability:Availability):void{
-    this.availabilityservice.UpdateAvailability(availability.AvailibityID, availability).subscribe(res  =>{
+  //updateReservation
+  UpdateReservation(reservation:Reservation):void{
+    this.reservationservice.UpdateReservation(reservation.ReservationID, reservation).subscribe(res  =>{
       if(res){
-        alert(`El registro ${availability.AvailibityID} se ha modificado correctamente`);
+        alert(`El registro ${reservation.ReservationID} se ha modificado correctamente`);
         this.clear();
         this.onDataTable();
       }else{
@@ -52,24 +62,49 @@ export class ContentComponent  {
     });
   }
 
+  //update state
+  onChangeState(reservation: Reservation): void {
+    reservation.Status = (reservation.Status === 'ACTIVADO') ? 'DESACTIVADO' : 'ACTIVADO';
+  
+    // Llamada al servicio para actualizar el estado en la base de datos
+    this.reservationservice.UpdateReservation(reservation.ReservationID, reservation).subscribe(res => {
+      if (res) {
+        alert(`El estado del platillo ${reservation.Description} se ha actualizado a ${reservation.Status}`);
+        this.clear();
+        this.onDataTable();
+      } else {
+        alert('Error de actualización');
+      }
+    });
+  }
+
   //seleccionar datos y set
   onSetData(select:any){  
     //igual que en el modelo - igual que en la api
-    this.availability.AvailibityID = select.AvailibityID;
-    this.availability.AvailibityPersonsMAX = select.AvailibityPersonsMAX;
-    this.availability.AvailibityPersonsMIN = select.AvailibityPersonsMIN;
-    this.availability.AvailibityReservationDailyMAX = select.AvailibityReservationDailyMAX;
-    this.availability.AvailibityReservationMonthlyMAX = select.AvailibityReservationMonthlyMAX;
-    this.availability.AvailibityReservationWeeklyMAX = select.AvailibityReservationWeeklyMAX;
+    this.reservation.ReservationID = select.ReservationID;
+    this.reservation.Description = select.Description;
+    this.reservation.ReservationDate = select.ReservationDate;
+    this.reservation.QuantityPersons = select.QuantityPersons;
+    this.reservation.CustomerID = select.CustomerID;
+    this.reservation.ReservationCost = select.ReservationCost;
+    this.reservation.ReservationTime = select.ReservationTime;
+    this.reservation.Status = select.Status;
   }
 
   clear(){
-    // igual que en la api
-    this.availability.AvailibityID = 0;
-    this.availability.AvailibityPersonsMAX = 0;
-    this.availability.AvailibityPersonsMIN= 0;
-    this.availability.AvailibityReservationDailyMAX = 0;
-    this.availability.AvailibityReservationMonthlyMAX = 0;
-    this.availability.AvailibityReservationWeeklyMAX = 0;
+      // igual que en la api
+      this.reservation.ReservationID = 0;
+      this.reservation.Description = "";
+      this.reservation.ReservationDate= new Date();
+      this.reservation.QuantityPersons = 0;
+      this.reservation.CustomerID = "";
+      this.reservation.ReservationCost = 0;
+      this.reservation.ReservationTime = "";
+      this.reservation.Status = "";
+  }
+  loadClientes() {
+    this.reservationservice.loadCliente().subscribe((res: any) => {
+      this.Customers = res.map((item: any) => item.Name_Customer);
+    });
   }
 }

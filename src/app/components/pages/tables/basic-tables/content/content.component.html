@@ -8,39 +8,50 @@
     </div>
     <div class="row text-center mt-5">
       <div class="col">
-        <h2 style="font-size: 80px;">DISPONIBILIDAD</h2>
+        <h2 style="font-size: 80px;">RESERVACIONES</h2>
       </div>
     </div>
     <div class="row mt-5">
         <div class="col-md-4">
             <label for="txtNombre" class="from-label">Id</label>
-            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityID">
+            <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="reservation.ReservationID">
           </div>
       <div class="col-md-4">
-        <label for="txtNombre" class="from-label">Maximo de Personas</label>
-        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityPersonsMAX">
+        <label for="txtNombre" class="from-label">Descripcion</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="reservation.Description">
       </div>
       <div class="col-md-4">
-        <label for="txtNombre" class="from-label">Minimo de Personas</label>
-        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityPersonsMIN">
+        <label for="txtNombre" class="from-label">Fecha Reservación</label>
+        <input type="date" name="id" id="txtNombre" class="form-control" [(ngModel)]="reservation.ReservationDate">
+      </div>
+      <div cl ass="col-md-4">
+        <label for="txtNombre" class="from-label">Cantidad de Personas</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="reservation.QuantityPersons">
       </div>
       <div class="col-md-4">
-        <label for="txtNombre" class="from-label">Maximo al Dia</label>
-        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityReservationDailyMAX">
+        <label for="cmbCliente" class="form-label" style="font-size: larger; font-weight: bold;">Nombre Cliente</label>
+        <select id="cmbCliente" class="form-control" [(ngModel)]="reservation.CustomerID" name="cmbCliente">
+          <option *ngFor="let Customer of Customers" [value]="Customer">{{ Customer }}</option>
+        </select>
       </div>
       <div class="col-md-4">
-        <label for="txtNombre" class="from-label">Maximo a la Semanales</label>
-        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="availability.AvailibityReservationWeeklyMAX">
+        <label for="txtId" class="from-label">Costo de Reservación</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="reservation.ReservationCost">
       </div>
       <div class="col-md-4">
-        <label for="txtId" class="from-label">Maximo al Mes</label>
-        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="availability.AvailibityReservationMonthlyMAX">
+        <label for="txtId" class="from-label">Tiempo de Reservación</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="reservation.ReservationTime">
+      </div>
+      <div class="col-md-4">
+        <label for="txtId" class="from-label">Estado</label>
+        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="reservation.Status">
       </div>
     </div>
     <div class="row mt-5">
       <div class="col">
-        <button class="btn btn-success m-2" type="button" (click)="AddAvailability(availability)">Agregar</button>
-        <button class="btn btn-warning m-2" type="button" (click)="UpdateAvailability(availability)">Modificar</button>
+        <button class="btn btn-success m-2" type="button" (click)="AddReservation(reservation)">Agregar</button>
+        <button class="btn btn-success m-2" type="button" (click)="onChangeState(reservation)">Activar o Desactivar</button>
+        <button class="btn btn-warning m-2" type="button" (click)="UpdateReservation(reservation)">Modificar</button>
         <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
       </div>
     </div>
@@ -51,24 +62,27 @@
             <tr>
               <th>Seleccionar</th>
               <th>Id</th>
-              <th>Maximo de Personas</th>
-              <th>Minimo de Personas</th>
-              <th>Maximo al Dia</th>
-              <th>Maximo a la Semanales</th>
-              <th>Maximo al Mes</th>
-              <th>Maximo al Mes</th>
+              <th>Descripcion</th>
+              <th>Fecha de Reservacion</th>
+              <th>Cantidad de Personas</th>
+              <th>Nombre del Cliente</th>
+              <th>Costo de Reservacion</th>
+              <th>Tiempo de reservacion</th>
+              <th>Estado</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of datatable">
               <td><input type="button" value="Seleccionar" (click)="onSetData(item)"></td>
               <!-- varibales de api -->
-              <td> {{ item.AvailibityID }} </td>
-              <td> {{ item.AvailibityPersonsMAX }} </td>
-              <td> {{ item.AvailibityPersonsMIN }} </td>
-              <td> {{ item.AvailibityReservationDailyMAX }} </td>
-              <td> {{ item.AvailibityReservationWeeklyMAX }} </td>
-              <td> {{ item.AvailibityReservationMonthlyMAX }} </td>
+              <td> {{ item.ReservationID }} </td>
+              <td> {{ item.Description }} </td>
+              <td> {{ item.ReservationDate }} </td>
+              <td> {{ item.QuantityPersons }} </td>
+              <td> {{ item.CustomerID }} </td>
+              <td> {{ item.ReservationCost }} </td>
+              <td> {{ item.ReservationTime }} </td>
+              <td> {{ item.Status }} </td>
             </tr>
           </tbody>
         </table>

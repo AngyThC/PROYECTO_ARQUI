@@ -21,11 +21,12 @@ import { NotesComponent } from './quick/notes/notes.component';
 import { InviteComponent } from './quick/invite/invite.component';
 import { SettingsComponent } from './quick/settings/settings.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { SidenavMeseroComponent } from './sidenav-mesero/sidenav-mesero.component';
 
 
 
 @NgModule({
-  declarations: [TopbarComponent, SidenavComponent, QuickbarComponent, TodolistComponent, RemindersComponent, NotesComponent, InviteComponent, SettingsComponent, BreadcrumbComponent],
+  declarations: [TopbarComponent, SidenavComponent,SidenavMeseroComponent, QuickbarComponent, TodolistComponent, RemindersComponent, NotesComponent, InviteComponent, SettingsComponent, BreadcrumbComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -35,7 +36,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SortablejsModule,
     BreadcrumbModule
   ],
-  exports: [TopbarComponent, SidenavComponent, QuickbarComponent, BreadcrumbComponent],
+  exports: [TopbarComponent, SidenavComponent, SidenavMeseroComponent, QuickbarComponent, BreadcrumbComponent],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
